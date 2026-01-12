@@ -1,0 +1,44 @@
+# ===========================
+# Visual Studio & .NET Core
+# ===========================
+.vs/
+[Bb]in/
+[Oo]bj/
+*.user
+*.userosscache
+*.sln.docstates
+*.suo
+
+# ===========================
+# ASP.NET Core & Secrets
+# ===========================
+# Security: 
+appsettings.Development.json
+appsettings.Local.json
+*.mdf
+*.ldf
+
+# ===========================
+# Node.js & Tailwind CSS
+# ===========================
+
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# ===========================
+# Operating System Files
+# ===========================
+.DS_Store
+Thumbs.db
+
+# ===========================
+# Visual Studio Code (Optional)
+# ===========================
+.vscode/
+
+# ===========================
+# wwwroot (Generated Files)
+# ===========================
+
+ wwwroot/css/tailwind.css

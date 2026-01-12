@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/Libraries/">
+    <Project Path="../../Libraries/GCTL_ERP.Core/GCTL_ERP.Core.csproj" />
+    <Project Path="../../Libraries/GCTL_ERP.Data/GCTL_ERP.Data.csproj" />
+    <Project Path="../../Libraries/GCTL_ERP.Service/GCTL_ERP.Service.csproj" />
+  </Folder>
+  <Folder Name="/UIs/">
+    <Project Path="GCTL_ERP.UI.Core.csproj" />
+  </Folder>
+</Solution>
