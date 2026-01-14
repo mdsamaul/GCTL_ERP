@@ -17,12 +17,7 @@
    "SelectedToBeGenerated": 0,
    "SingularRules": null,
    "T4TemplatePath": null,
-   "Tables": [
-      {
-         "Name": "[dbo].[Core_UserInfo]",
-         "ObjectType": 0
-      }
-   ],
+   "Tables": [ ],
    "UiHint": null,
    "UncountableWords": null,
    "UseAsyncStoredProcedureCalls": true,

@@ -2,76 +2,21 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace GCTL_ERP.Data.Models;
 
-public partial class ApplicationDbContext : DbContext
+public partial class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         : base(options)
     {
     }
 
-    public virtual DbSet<CoreUserInfo> CoreUserInfos { get; set; }
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<CoreUserInfo>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("PK__Core_Use__3214EC2713387AD9");
-
-            entity.ToTable("Core_UserInfo");
-
-            entity.Property(e => e.Id).HasColumnName("ID");
-            entity.Property(e => e.AccessCode).HasMaxLength(250);
-            entity.Property(e => e.AccessPermissionBranchCode).HasColumnName("AccessPermission_BranchCode");
-            entity.Property(e => e.AccessPermissionCompanyCode).HasColumnName("AccessPermission_CompanyCode");
-            entity.Property(e => e.AccessPermissionDivisionCode).HasColumnName("AccessPermission_DivisionCode");
-            entity.Property(e => e.AccessPermissionJobTitle)
-                .HasMaxLength(50)
-                .HasColumnName("AccessPermission_JobTitle");
-            entity.Property(e => e.Dob)
-                .HasColumnType("datetime")
-                .HasColumnName("DOB");
-            entity.Property(e => e.EmployeeId)
-                .HasMaxLength(100)
-                .HasColumnName("EmployeeID");
-            entity.Property(e => e.EntryDate).HasColumnType("smalldatetime");
-            entity.Property(e => e.FirstName).HasMaxLength(100);
-            entity.Property(e => e.LastName).HasMaxLength(100);
-            entity.Property(e => e.Ldate)
-                .HasColumnType("smalldatetime")
-                .HasColumnName("LDate");
-            entity.Property(e => e.Lip)
-                .HasMaxLength(150)
-                .HasColumnName("LIP");
-            entity.Property(e => e.Lmac)
-                .HasMaxLength(250)
-                .HasColumnName("LMAC");
-            entity.Property(e => e.Luser)
-                .HasMaxLength(250)
-                .HasColumnName("LUser");
-            entity.Property(e => e.ModifyDate).HasColumnType("smalldatetime");
-            entity.Property(e => e.OffEmail).HasMaxLength(150);
-            entity.Property(e => e.OffPhone).HasMaxLength(50);
-            entity.Property(e => e.Password).HasColumnName("password");
-            entity.Property(e => e.PerEmail).HasMaxLength(150);
-            entity.Property(e => e.PerPhone).HasMaxLength(50);
-            entity.Property(e => e.Regulation).HasMaxLength(50);
-            entity.Property(e => e.Role).HasMaxLength(50);
-            entity.Property(e => e.SingleSession).HasMaxLength(50);
-            entity.Property(e => e.Status)
-                .HasMaxLength(50)
-                .IsUnicode(false);
-            entity.Property(e => e.Token).HasMaxLength(500);
-            entity.Property(e => e.Type).HasMaxLength(250);
-            entity.Property(e => e.Username)
-                .HasMaxLength(250)
-                .HasColumnName("username");
-            entity.Property(e => e.WorkStation).HasMaxLength(250);
-        });
-
+        base.OnModelCreating(modelBuilder);
         OnModelCreatingPartial(modelBuilder);
     }
 
