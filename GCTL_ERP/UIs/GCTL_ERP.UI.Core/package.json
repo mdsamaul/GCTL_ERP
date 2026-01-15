@@ -1,21 +1,15 @@
 {
   "name": "gctl_erp.ui.core",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "GCTL ERP System",
   "scripts": {
-    "build:css": "tailwindcss -i ./wwwroot/css/input.css -o ./wwwroot/css/tailwind.css --minify",
-    "watch:css": "tailwindcss -i ./wwwroot/css/input.css -o ./wwwroot/css/tailwind.css --watch"
+    "build:css": "tailwindcss -c ./tailwind.config.js -i ./wwwroot/css/input.css -o ./wwwroot/css/tailwind.css --minify",
+    "watch:css": "tailwindcss -c ./tailwind.config.js -i ./wwwroot/css/input.css -o ./wwwroot/css/tailwind.css --watch",
+    "postinstall": "npm run build:css"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "eslint": "^9.39.2",
-    "postcss": "^8.5.6",
-    "postcss-cli": "^11.0.1",
-    "postcss-prefix-selector": "^2.1.1"
-  },
   "dependencies": {
     "@tailwindcss/cli": "^4.1.18",
     "tailwindcss": "^4.1.18"

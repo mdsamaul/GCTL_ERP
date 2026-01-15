@@ -1,4 +1,4 @@
-﻿@model GCTL_ERP.Core.ViewModelDTOs.AccountDTO.LoginViewModelDTO
+﻿@* @model GCTL_ERP.Core.ViewModelDTOs.AccountDTO.LoginViewModelDTO
 
 @{
     ViewData["Title"] = "লগইন";
@@ -37,6 +37,210 @@
     </div>
 </div>
 
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+} *@
+@* 
+@model GCTL_ERP.Core.ViewModelDTOs.AccountDTO.LoginViewModelDTO
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="tw-min-h-screen tw-bg-gradient-to-br tw-from-blue-600 tw-to-blue-800 tw-flex tw-items-center tw-justify-center tw-p-4">
+    <div class="tw-w-full tw-max-w-5xl">
+        <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 tw-gap-0 tw-bg-white tw-rounded-lg tw-shadow-2xl tw-overflow-hidden">
+
+            <!-- Image Section -->
+            <div class="tw-hidden md:tw-flex tw-bg-gradient-to-br tw-from-blue-500 tw-to-blue-700 tw-items-center tw-justify-center tw-p-12">
+                <div class="tw-text-white tw-text-center">
+                    <div class="tw-mb-6">
+                        <svg class="tw-w-24 tw-h-24 tw-mx-auto tw-mb-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
+                        </svg>
+                    </div>
+                    <h2 class="tw-text-3xl tw-font-bold tw-mb-4">Welcome</h2>
+                    <p class="tw-text-lg tw-text-blue-100 tw-mb-6">Sign in to your account and get started</p>
+                    <div class="tw-space-y-3 tw-text-left tw-bg-blue-400 tw-bg-opacity-20 tw-rounded-lg tw-p-4">
+                        <div class="tw-flex tw-items-center">
+                            <div class="tw-w-3 tw-h-3 tw-bg-green-300 tw-rounded-full tw-mr-3"></div>
+                            <span>Secure and Protected</span>
+                        </div>
+                        <div class="tw-flex tw-items-center">
+                            <div class="tw-w-3 tw-h-3 tw-bg-green-300 tw-rounded-full tw-mr-3"></div>
+                            <span>Fast and Reliable</span>
+                        </div>
+                        <div class="tw-flex tw-items-center">
+                            <div class="tw-w-3 tw-h-3 tw-bg-green-300 tw-rounded-full tw-mr-3"></div>
+                            <span>Easy User Interface</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Login Form Section -->
+            <div class="tw-flex tw-items-center tw-justify-center tw-p-8 md:tw-p-12">
+                <div class="tw-w-full">
+                    <h1 class="tw-text-3xl tw-font-bold tw-text-gray-800 tw-mb-2">Login</h1>
+                    <p class="tw-text-gray-600 tw-mb-8">Access your account</p>
+
+                    <form asp-action="Login" method="post" class="tw-space-y-5">
+                        <div asp-validation-summary="All" class="tw-bg-red-50 tw-border tw-border-red-200 tw-text-red-700 tw-px-4 tw-py-3 tw-rounded-lg tw-mb-4"></div>
+
+                        <!-- Email Field -->
+                        <div>
+                            <label asp-for="Email" class="tw-block tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-2"></label>
+                            <div class="tw-relative">
+                                <svg class="tw-absolute tw-left-3 tw-top-3.5 tw-w-5 tw-h-5 tw-text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                </svg>
+                                <input asp-for="Email" type="email" placeholder="Enter your email" class="tw-w-full tw-pl-10 tw-pr-4 tw-py-2.5 tw-border tw-border-gray-300 tw-rounded-lg tw-focus:outline-none tw-focus:ring-2 tw-focus:ring-blue-500 tw-focus:border-transparent tw-transition" />
+                            </div>
+                            <span asp-validation-for="Email" class="tw-text-red-500 tw-text-sm tw-mt-1 tw-block"></span>
+                        </div>
+
+                        <!-- Password Field -->
+                        <div>
+                            <label asp-for="Password" class="tw-block tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-2"></label>
+                            <div class="tw-relative">
+                                <svg class="tw-absolute tw-left-3 tw-top-3.5 tw-w-5 tw-h-5 tw-text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                                </svg>
+                                <input asp-for="Password" type="password" placeholder="Enter your password" class="tw-w-full tw-pl-10 tw-pr-4 tw-py-2.5 tw-border tw-border-gray-300 tw-rounded-lg tw-focus:outline-none tw-focus:ring-2 tw-focus:ring-blue-500 tw-focus:border-transparent tw-transition" />
+                            </div>
+                            <span asp-validation-for="Password" class="tw-text-red-500 tw-text-sm tw-mt-1 tw-block"></span>
+                        </div>
+
+                        <!-- Remember Me -->
+                        <div class="tw-flex tw-items-center">
+                            <input asp-for="RememberMe" type="checkbox" class="tw-w-4 tw-h-4 tw-text-blue-600 tw-bg-gray-100 tw-border-gray-300 tw-rounded tw-focus:ring-blue-500" />
+                            <label asp-for="RememberMe" class="tw-ml-2 tw-text-sm tw-font-medium tw-text-gray-900"></label>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="tw-w-full tw-bg-blue-600 hover:tw-bg-blue-700 tw-text-white tw-font-semibold tw-py-2.5 tw-rounded-lg tw-transition tw-duration-200 tw-mt-6">
+                            Login
+                        </button>
+                    </form>
+
+                    <!-- Register Link -->
+                    <div class="tw-mt-6 tw-text-center">
+                        <p class="tw-text-gray-600">
+                            New user?
+                            <a asp-action="Register" class="tw-text-blue-600 hover:tw-text-blue-700 tw-font-semibold">Sign up here</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+} *@
+@model GCTL_ERP.Core.ViewModelDTOs.AccountDTO.AuthViewModel
+@{
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+}
+<div class="container right-panel-active">
+    <!-- Sign Up -->
+    <div class="container__form container--signup">
+       
+        
+        <form asp-action="Register" method="post" class="form" id="form2">
+
+            <h2 class="form__title">Sign Up</h2>
+
+
+            <div asp-validation-summary="ModelOnly"></div>
+
+            <input asp-for="Login.Email"
+                   type="email"
+                   placeholder="Email"
+                   class="input" />
+            <span asp-validation-for="Login.Email"></span>
+
+            <input asp-for="Login.Password"
+                   type="password"
+                   placeholder="Password"
+                   class="input" />
+            <span asp-validation-for="Login.Password"></span>
+
+            <div style="text-align: left; width: 100%; margin-bottom: 10px;">
+                <input asp-for="Login.RememberMe" />
+                <label asp-for="Login.RememberMe" style="font-size: 0.9rem; color: #333;"></label>
+            </div>
+
+            <button type="submit" class="btn">Login</button>
+
+            <div style="margin-top: 15px; text-align: center; font-size: 0.9rem;">
+                <p>
+                    New user?
+                    <a asp-action="Register" style="color: blue; text-decoration: none;">Sign up here</a>
+                </p>
+            </div>
+
+        </form> 
+
+    </div>
+    <!-- Sign In -->
+    <div class="container__form container--signin">
+       
+        <form asp-action="Login" method="post" class="tw-space-y-5">
+
+            <h2 class="form__title">Login</h2>
+            <div asp-validation-summary="ModelOnly" style="color: red; font-size: 0.8rem; margin-bottom: 10px;"></div>
+
+            <input asp-for="Register.FullName"
+                   type="text"
+                   placeholder="Full Name"
+                   class="input" />
+            <span asp-validation-for="Register.FullName" style="color: red; font-size: 0.8rem; display: block;"></span>
+
+            <input asp-for="Register.Email"
+                   type="email"
+                   placeholder="Email"
+                   class="input" />
+            <span asp-validation-for="Register.Email" style="color: red; font-size: 0.8rem; display: block;"></span>
+
+            <input asp-for="Register.Password"
+                   type="password"
+                   placeholder="Password"
+                   class="input" />
+            <span asp-validation-for="Register.Password" style="color: red; font-size: 0.8rem; display: block;"></span>
+
+            <input asp-for="Register.ConfirmPassword"
+                   type="password"
+                   placeholder="Confirm Password"
+                   class="input" />
+            <span asp-validation-for="Register.ConfirmPassword" style="color: red; font-size: 0.8rem; display: block;"></span>
+
+            <button type="submit" class="btn">Sign Up</button>
+
+            <a asp-action="Login" class="link" style="margin-top: 10px; display: inline-block;">
+                Already have an account? Sign in
+            </a>
+
+        </form>
+    </div>
+    <!-- Overlay -->
+    <div class="container__overlay">
+        <div class="overlay">
+            <div class="overlay__panel overlay--left">
+                <button class="btn"
+                        id="signIn">
+                    Sign In
+                </button>
+            </div>
+            <div class="overlay__panel overlay--right">
+                <button class="btn"
+                        id="signUp">
+                    Sign Up
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }

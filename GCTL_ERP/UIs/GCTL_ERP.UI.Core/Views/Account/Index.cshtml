@@ -1,49 +1,60 @@
-﻿@model GCTL_ERP.Core.ViewModelDTOs.AccountDTO.RegisterViewModelDTO
+﻿<body class="tw-bg-gray-100 tw-p-5">
 
-@{
-    ViewData["Title"] = "নিবন্ধন";
-}
+    <!-- Bootstrap Card -->
+    <div class="card mb-4" style="width: 18rem;">
+        <img src="https://via.placeholder.com/150" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Bootstrap Card</h5>
+            <p class="card-text">এই কার্ডটি Bootstrap ব্যবহার করে তৈরি করা হয়েছে।</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
 
-<h2>@ViewData["Title"]</h2>
+    <!-- Tailwind Card -->
+    <div class="tw-max-w-sm tw-rounded tw-overflow-hidden tw-shadow-lg tw-bg-white tw-mb-4">
+        <img class="tw-w-full" src="https://via.placeholder.com/150" alt="Sunset in the mountains">
+        <div class="tw-p-6">
+            <div class="tw-font-bold tw-text-xl tw-mb-2">Tailwind Card</div>
+            <p class="tw-text-gray-700 tw-text-base">
+                এই কার্ডটি Tailwind CSS (prefix `tw-`) ব্যবহার করে তৈরি করা হয়েছে।
+            </p>
+            <button class="tw-bg-blue-500 tw-text-white tw-font-bold tw-py-2 tw-px-4 tw-rounded hover:tw-bg-blue-700">
+                Click Me
+            </button>
+        </div>
+    </div>
 
-<div class="row">
-    <div class="col-md-6 offset-md-3">
-        <form asp-action="Register" method="post">
-            <div asp-validation-summary="All" class="text-danger"></div>
+</body>
 
-            <div class="form-group mb-3">
-                <label asp-for="FullName" class="form-label"></label>
-                <input asp-for="FullName" class="form-control" />
-                <span asp-validation-for="FullName" class="text-danger"></span>
+
+<div class="tw-flex tw-justify-center tw-items-center tw-h-screen tw-bg-gray-100">
+    <!-- Card -->
+    <div class="tw-max-w-sm tw-bg-white tw-rounded-2xl tw-shadow-xl tw-overflow-hidden tw-transition-transform tw-duration-300 hover:tw-scale-105">
+        <!-- Image -->
+        <img src="https://images.unsplash.com/photo-1606788075760-4a4e6c62c6c6?auto=format&fit=crop&w=800&q=80" alt="Card Image" class="tw-w-full tw-h-48 tw-object-cover">
+
+        <!-- Card Body -->
+        <div class="tw-p-6">
+            <h2 class="tw-text-2xl tw-font-bold tw-text-gray-800 tw-mb-2">সুন্দর কার্ড</h2>
+            <p class="tw-text-gray-600 tw-mb-4">
+                এটি একটি উদাহরণ কার্ড যা শুধুমাত্র Tailwind CSS ব্যবহার করে ডিজাইন করা হয়েছে। এখানে ছবির উপরে, টাইটেল এবং বর্ণনা রয়েছে।
+            </p>
+
+            <!-- Badges -->
+            <div class="tw-flex tw-gap-2 tw-mb-4">
+                <span class="tw-bg-blue-100 tw-text-blue-800 tw-text-xs tw-font-semibold tw-px-2 tw-py-1 tw-rounded-full">নতুন</span>
+                <span class="tw-bg-green-100 tw-text-green-800 tw-text-xs tw-font-semibold tw-px-2 tw-py-1 tw-rounded-full">শীর্ষ বিক্রয়</span>
             </div>
 
-            <div class="form-group mb-3">
-                <label asp-for="Email" class="form-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
+            <!-- Buttons -->
+            <div class="tw-flex tw-gap-3">
+                <button class="tw-bg-blue-500 hover:tw-bg-blue-600 tw-text-white tw-font-semibold tw-px-4 tw-py-2 tw-rounded-lg tw-shadow-md hover:tw-shadow-lg tw-transition-all tw-duration-300">
+                    বিস্তারিত দেখুন
+                </button>
+                <button class="tw-bg-gray-200 hover:tw-bg-gray-300 tw-text-gray-800 tw-font-semibold tw-px-4 tw-py-2 tw-rounded-lg tw-shadow-sm hover:tw-shadow-md tw-transition-all tw-duration-300">
+                    শেয়ার করুন
+                </button>
             </div>
-
-            <div class="form-group mb-3">
-                <label asp-for="Password" class="form-label"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-
-            <div class="form-group mb-3">
-                <label asp-for="ConfirmPassword" class="form-label"></label>
-                <input asp-for="ConfirmPassword" class="form-control" />
-                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-            </div>
-
-            <button type="submit" class="btn btn-primary">নিবন্ধন করুন</button>
-        </form>
-
-        <div class="mt-3">
-            <p>ইতিমধ্যে অ্যাকাউন্ট আছে? <a asp-action="Login">লগইন করুন</a></p>
         </div>
     </div>
 </div>
-
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}

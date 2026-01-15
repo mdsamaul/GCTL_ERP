@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿@* <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -52,5 +52,115 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html> *@
+
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - GCTL ERP</title>
+
+    <!-- CSS Load Order - গুরুত্বপূর্ণ! -->
+    <!-- ১. Bootstrap প্রথমে -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <!-- ২. Tailwind CSS (tw- prefix সহ) -->
+    <link rel="stylesheet" href="~/css/tailwind.css" asp-append-version="true" />
+
+    <!-- ৩. Custom CSS সবশেষে -->
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/GCTL_ERP.UI.Core.styles.css" asp-append-version="true" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            prefix: 'tw-',
+            content: ["./**/*.cshtml"],
+        }
+    </script>
+
+</head>
+<body>
+    <header class="tw-bg-white tw-shadow-sm tw-sticky tw-top-0 tw-z-50">
+        <nav class="tw-border-b tw-border-gray-200">
+            <div class="tw-max-w-7xl tw-mx-auto tw-px-4 sm:tw-px-6 lg:tw-px-8">
+                <div class="tw-flex tw-justify-between tw-items-center tw-h-16">
+
+                    
+                    <!-- Logo -->
+                    <div class="tw-flex tw-items-center">
+                        <a asp-controller="Home" asp-action="Index" class="tw-font-bold tw-text-2xl tw-text-blue-600 hover:tw-text-blue-700 tw-transition">
+                            GCTL ERP
+                        </a>
+                    </div>
+
+                    <!-- Mobile Menu Button -->
+                    @* <button class="tw-md:hidden tw-inline-flex tw-items-center tw-justify-center tw-p-2 tw-rounded-md tw-text-gray-600 hover:tw-text-gray-900 hover:tw-bg-gray-100 tw-transition" id="mobileMenuBtn">
+                        <svg class="tw-block tw-h-6 tw-w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button> *@
+
+                    <!-- Desktop Menu -->
+                    <ul class="tw-hidden md:tw-flex tw-items-center tw-space-x-6">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li>
+                                <span class="tw-text-gray-700 tw-flex tw-items-center tw-space-x-2">
+                                    <span class="tw-font-medium">Welcome,</span>
+                                    <span class="tw-text-blue-600 tw-font-semibold">@User.Identity.Name</span>
+                                </span>
+                            </li>
+                            <li>
+                                <form asp-controller="Account" asp-action="Logout" method="post" class="tw-inline">
+                                    <button type="submit" class="tw-text-red-600 hover:tw-text-red-700 tw-font-medium tw-transition tw-bg-transparent tw-border-0 tw-cursor-pointer tw-p-0">
+                                        Logout
+                                    </button>
+                                </form>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <a asp-controller="Account" asp-action="Register" class="tw-text-blue-600 hover:tw-text-blue-700 tw-font-medium tw-transition">
+                                    Register
+                                </a>
+                            </li>
+                            <li>
+                                <a asp-controller="Account" asp-action="Login" class="tw-bg-green-600 hover:tw-bg-green-700 tw-text-white tw-px-4 tw-py-2 tw-rounded-lg tw-font-medium tw-transition">
+                                    Login
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+
+                
+            </div>
+        </nav>
+    </header>
+
+    <div class="container tw-my-8">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <footer class="tw-border-t tw-border-gray-200 tw-bg-gray-50 tw-text-gray-600">
+        <div class="tw-max-w-7xl tw-mx-auto tw-px-4 tw-py-6 tw-text-center">
+            <p class="tw-m-0">
+                &copy; 2026 - GCTL ERP - <a asp-controller="Home" asp-action="Privacy" class="tw-text-blue-600 hover:tw-underline">Privacy</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+   
 </body>
 </html>

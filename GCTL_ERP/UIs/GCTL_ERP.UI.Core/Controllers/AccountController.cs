@@ -29,24 +29,22 @@ namespace GCTL_ERP.UI.Core.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(RegisterViewModelDTO model)
+        public async Task<IActionResult> Register(AuthViewModel model)
         {
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser
                 {
-                    UserName = model.Email,
-                    Email = model.Email,
-                    FullName = model.FullName
+                    UserName = model.Register.Email,
+                    Email = model.Register.Email,
+                    FullName = model.Register.FullName
                 };
-
-                var result = await _userManager.CreateAsync(user, model.Password);
+                var result = await _userManager.CreateAsync(user, model.Register.Password);
                 if (result.Succeeded)
                 {
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Home");
                 }
-
                 foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError(string.Empty, error.Description);
@@ -55,19 +53,26 @@ namespace GCTL_ERP.UI.Core.Controllers
             return View(model);
         }
 
+
+
         [HttpGet]
         public IActionResult Login()
         {
-            return View();
+            return View(new AuthViewModel());
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(LoginViewModelDTO model)
+        public async Task<IActionResult> Login(AuthViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
+                var result = await _signInManager.PasswordSignInAsync(
+                    model.Login.Email,
+                    model.Login.Password,
+                    model.Login.RememberMe,
+                    lockoutOnFailure: false);
+
                 if (result.Succeeded)
                 {
                     return RedirectToAction("Index", "Home");
@@ -85,7 +90,7 @@ namespace GCTL_ERP.UI.Core.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Index", "Account");
+            return RedirectToAction("Login", "Account");
         }
     }
 }

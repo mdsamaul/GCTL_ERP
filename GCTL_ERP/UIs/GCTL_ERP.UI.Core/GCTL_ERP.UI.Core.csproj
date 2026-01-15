@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+<!--<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
@@ -30,4 +30,49 @@
     <Folder Include="Data\" />
   </ItemGroup>
 
+</Project>-->
+
+
+<Project Sdk="Microsoft.NET.Sdk.Web">
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="10.0.2" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.1">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.1" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.1">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="10.0.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\Libraries\GCTL_ERP.Core\GCTL_ERP.Core.csproj" />
+		<ProjectReference Include="..\..\Libraries\GCTL_ERP.Data\GCTL_ERP.Data.csproj" />
+		<ProjectReference Include="..\..\Libraries\GCTL_ERP.Service\GCTL_ERP.Service.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Data\" />
+	</ItemGroup>
+
+	<!-- Tailwind CSS Automatic Build -->
+	<Target Name="BuildTailwindCSS" BeforeTargets="Build">
+		<Message Importance="high" Text="Building Tailwind CSS..." />
+		<Exec Command="npm run build:css" WorkingDirectory="$(ProjectDir)" />
+	</Target>
+
+	<!-- Development এর জন্য Watch mode -->
+	<Target Name="WatchTailwindCSS" BeforeTargets="Run" Condition="'$(Configuration)' == 'Debug'">
+		<Message Importance="high" Text="Starting Tailwind CSS watch mode..." />
+		<Exec Command="npm run watch:css" WorkingDirectory="$(ProjectDir)" ContinueOnError="true" />
+	</Target>
 </Project>
